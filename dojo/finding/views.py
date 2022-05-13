@@ -2279,3 +2279,8 @@ def calculate_possible_related_actions_for_similar_finding(request, finding, sim
     # logger.debug('related_actions for %i: %s', similar_finding.id, {finding.id: actions})
 
     return actions
+
+def convert_to_json(request, fid):
+    finding_qs = prefetch_for_findings(Finding.objects.all())
+    finding = get_object_or_404(finding_qs, id=fid)
+    return HttpResponse(finding)

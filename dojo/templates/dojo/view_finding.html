@@ -950,10 +950,12 @@
             <!--Cred end -->
         {% endif %}
 
-        <div id="convert_to_CASF">
-            <button class="btn btn-primary" type="button">Convert to CSAF</button> <!-- Stop -->
+        <form action="/finding/{{finding.id}}/convert_json/" method="post">
+            {% csrf_token %}
+            <button class="btn btn-primary" type="submit">Convert to CSAF</button> <!-- Stop -->
             <br>
-        </div>
+        </form>
+       
 
     </div>
 
