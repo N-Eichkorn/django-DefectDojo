@@ -2283,4 +2283,7 @@ def calculate_possible_related_actions_for_similar_finding(request, finding, sim
 def convert_to_json(request, fid):
     finding_qs = prefetch_for_findings(Finding.objects.all())
     finding = get_object_or_404(finding_qs, id=fid)
-    return HttpResponse(finding)
+    from .CSAF import generateCSAF
+    response = HttpResponse(generateCSAF(finding), content_type='application/json')
+    response['Content-Disposition'] = 'attachment; filename=' + finding.title + '.json'
+    return response
