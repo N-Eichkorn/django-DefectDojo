@@ -93,6 +93,7 @@ urlpatterns = [
         views.reset_finding_duplicate_status, name='reset_finding_duplicate_status'),
     url(r'^finding/(?P<finding_id>\d+)/original/(?P<new_original_id>\d+)$',
         views.set_finding_as_original, name='set_finding_as_original'),
+    url(r'^finding/(?P<fid>\d+)/convert_json/', views.convert_to_json, name='convert_json'), #Stop
 
     # stub findings
     url(r'^stub_finding/(?P<tid>\d+)/add$',

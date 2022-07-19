@@ -624,7 +624,7 @@
             </div>
         </div>
     {% endif %}
-
+    
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="has-filters">Similar Findings ({{ similar_findings.paginator.count }})
@@ -949,6 +949,14 @@
             </div>
             <!--Cred end -->
         {% endif %}
+
+        <form action="/finding/{{finding.id}}/convert_json/" method="post">
+            {% csrf_token %}
+            <button class="btn btn-primary" type="submit">Convert to CSAF</button> <!-- Stop -->
+            <br>
+        </form>
+       
+
     </div>
 
     {% include "dojo/snippets/sonarqube_history.html" with finding=finding only %}
